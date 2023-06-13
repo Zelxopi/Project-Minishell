@@ -6,7 +6,7 @@
 #    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 14:05:08 by kafortin          #+#    #+#              #
-#    Updated: 2023/06/13 14:11:13 by kafortin         ###   ########.fr        #
+#    Updated: 2023/06/13 14:20:45 by kafortin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,9 @@ NAME = minishell
 
 MAKE_LIBFT = cd ./Libft/ && make
 
-FILES = ./srcs/minishell.c
+FILES = ./srcs/minishell.c \
+		./srcs/builtins/echo.c \
+		./srcs/parsing/parsing.c \
 
 OBJS = $(FILES:.c=.o)
 
