@@ -1,3 +1,7 @@
+Do not forget:
+- Protect all your mallocs
+- No leaks
+
 At the end of the project:
 - Tests
 - Check if all the includes are necessary and delete all the unnecessary ones.
