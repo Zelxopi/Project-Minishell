@@ -1,19 +1,26 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   minishell.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/13 13:25:42 by kafortin          #+#    #+#             */
-/*   Updated: 2023/06/16 15:20:22 by kafortin         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+
 
 #include "../includes/minishell.h"
 
-int	main(int argc, char **argv)
+int main()
 {
-	parsing(argc, argv);
-	return (0);
+	t_dlist	*tokens = malloc(sizeof(t_dlist));
+	char *line;
+
+	ft_signals();
+	while (1)
+	{
+		line = readline("minishell$> ");
+		if (line && *line)
+		{
+			add_history(line);
+			ft_parse(line, tokens);
+		}
+		if (!line)
+			break ;
+		free(line);
+	}
+	rl_clear_history();
+	free(tokens);
+    return (0);
 }

@@ -1,49 +1,48 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/13 14:05:08 by kafortin          #+#    #+#              #
-#    Updated: 2023/06/13 14:20:45 by kafortin         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
 
-CC = gcc
-
-CFLAGS = -Wall -Wextra -Werror
 
 NAME = minishell
 
-MAKE_LIBFT = cd ./Libft/ && make
+SRCS =	minishell.c \
+		signals.c \
+		parsing/parsing.c \
+		parsing/split.c \
 
-FILES = ./srcs/minishell.c \
-		./srcs/builtins/echo.c \
-		./srcs/parsing/parsing.c \
+OBJ = $(SRCS:.c=.o)
 
-OBJS = $(FILES:.c=.o)
+SDIR = srcs
+ODIR = obj
+SFIX = $(addprefix $(SDIR)/, $(SRCS))
+OFIX = $(addprefix $(ODIR)/, $(OBJ))
 
-RM = @rm -f
+CC = gcc
+CFLAGS = -g -Wall -Wextra -Werror
+RM = rm -fr
+LIBS = ./includes/Libft/libft.a ./includes/dlist/dlist.a ./includes/readline/libreadline.a ./includes/readline/libhistory.a -lreadline -lcurses
 
-.SILENT: $(OBJS)
+$(ODIR):
+	@mkdir -p $(ODIR)
+	@mkdir -p $(ODIR)/parsing $(ODIR)/builtins
+
+$(ODIR)/%.o:$(SDIR)/%.c
+	@$(CC) $(CFLAGS) -c $< -o $@
+	@echo "\033[92m.\033[0m\c"
+
+$(NAME): $(ODIR) $(OFIX)
+	@$(MAKE) -C ./includes/Libft
+	@$(MAKE) lib -C ./includes/dlist
+	@$(CC) $(CFLAGS) $(OFIX) -o $(NAME) $(LIBS)
+
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-			@$(MAKE_LIBFT)
-			@echo "Compiling minishell..."
-			@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
-			@echo "Completed! 🕺"
-
 clean:
-			@$(MAKE) clean -C ./Libft
-			$(RM) $(OBJS)
+	@$(MAKE) clean -C ./includes/Libft
+	@$(RM) $(OFIX) $(ODIR)
+	@echo "🧹"
 
-fclean:
-			@$(MAKE) fclean -C ./Libft
-			$(RM) $(OBJS)
-			$(RM) $(NAME)
+fclean: clean
+	@$(MAKE) fclean -C ./includes/Libft
+	@$(RM) $(NAME)
 
 re: fclean all
 

@@ -1,7 +1,11 @@
 Do not forget:
 - Protect all your mallocs
 - No leaks
+- No header until project is done
 
 At the end of the project:
 - Tests
 - Check if all the includes are necessary and delete all the unnecessary ones.
+
+Valgrind command
+valgrind --suppressions=ignore_rdl_leaks.txt --leak-check=full --track-fds=yes ./minishell

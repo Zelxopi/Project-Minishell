@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 20:32:19 by kafortin          #+#    #+#              #
-#    Updated: 2023/03/21 18:12:34 by kafortin         ###   ########.fr        #
+#    Updated: 2023/06/16 16:57:08 by mtrembla         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,19 +69,18 @@ RM = @rm -f
 all: $(NAME)
 
 $(NAME): $(OBJS)
-		@echo "Compiling Libft..."
-		@ar rcs $(NAME) $(OBJS)
-		@echo "Completed!"
+	@echo "Compiling Libft..."
+	@ar rcs $(NAME) $(OBJS)
+	@echo "Completed!"
 
 clean:
-		@echo "Cleaning all object files... 🧹"
-		$(RM) $(OBJS)
-		@echo "Completed!"
+	@echo "Cleaning all object files... 🧹"
+	$(RM) $(OBJS)
 		
 fclean: clean
-		@echo "Cleaning library... 🧹"
-		$(RM) $(NAME)
-		@echo "✨ Cleaning complete! ✨"
+	@echo "Cleaning library... 🧹"
+	$(RM) $(NAME)
+	@echo "✨ Cleaning complete! ✨"
 
 re: fclean all
 
