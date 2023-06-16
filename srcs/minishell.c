@@ -6,8 +6,14 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:25:42 by kafortin          #+#    #+#             */
-/*   Updated: 2023/06/13 14:18:58 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:20:22 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/minishell.h"
+
+int	main(int argc, char **argv)
+{
+	parsing(argc, argv);
+	return (0);
+}

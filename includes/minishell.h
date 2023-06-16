@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:26:15 by kafortin          #+#    #+#             */
-/*   Updated: 2023/06/13 14:00:39 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/06/16 15:21:32 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,8 @@
 /*STRUCTS*/
 
 /*FUNCTIONS*/
+
+/*parsing*/
+int	parsing(int argc, char **argv);
 
 #endif
