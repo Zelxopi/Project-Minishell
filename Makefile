@@ -4,6 +4,7 @@ NAME = minishell
 
 SRCS =	minishell.c \
 		signals.c \
+		utils.c \
 		parsing/parsing.c \
 		parsing/split.c \
 

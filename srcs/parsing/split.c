@@ -41,8 +41,7 @@ int	ft_quotes(char *args, int i, t_dlist *t)
 		i++;
 	if (args[i])
 		return (i + 1);
-	t->error = 1;
-	printf("ERROR: Unclosed quotes\n");
+	error_message(UNCLOSED_QUOTES, t);
 	return (i);
 }
 

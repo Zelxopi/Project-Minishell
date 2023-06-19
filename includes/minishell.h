@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
+/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:26:15 by kafortin          #+#    #+#             */
-/*   Updated: 2023/06/16 16:15:11 by mtrembla         ###   ########.fr       */
+/*   Updated: 2023/06/19 15:00:40 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,15 @@
 # include <term.h>
 
 /*ERROR MESSAGES*/
-# define ERROR "ERROR\n"
+# define UNEXPECTED_TOKEN "Syntax error near unexpected token '%c'\n"
+# define UNCLOSED_QUOTES "Unclosed quotes\n"
 
 /*STRUCTS*/
 
 /*FUNCTIONS*/
+
+//utils
+void				error_message(char *message, t_dlist *t);
 
 /*----------parsing--------*/
 //parsing
@@ -50,7 +54,7 @@ int					ft_quotes(char *args, int i, t_dlist *t);
 int					ft_create_token(char *args, int i, int start, t_dlist *t);
 
 /*signals*/
-void	ft_signals(void);
-void	ft_sigint_handler(int signum);
+void				ft_signals(void);
+void				ft_sigint_handler(int signum);
 
 #endif
