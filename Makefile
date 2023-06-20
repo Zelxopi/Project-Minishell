@@ -2,18 +2,16 @@
 
 NAME = minishell
 
-SRCS =	minishell.c \
-		signals.c \
-		utils.c \
-		parsing/parsing.c \
-		parsing/split.c \
+SRCS =	./srcs/minishell.c \
+		./srcs/signals.c \
+		./srcs/utils.c \
+		./srcs/parsing/parsing.c \
+		./srcs/parsing/split.c \
 
-OBJ = $(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
-SDIR = srcs
 ODIR = obj
-SFIX = $(addprefix $(SDIR)/, $(SRCS))
-OFIX = $(addprefix $(ODIR)/, $(OBJ))
+OFIX = $(addprefix $(ODIR)/, $(OBJS))
 
 CC = gcc
 CFLAGS = -g -Wall -Wextra -Werror
@@ -24,21 +22,22 @@ $(ODIR):
 	@mkdir -p $(ODIR)
 	@mkdir -p $(ODIR)/parsing $(ODIR)/builtins
 
-$(ODIR)/%.o:$(SDIR)/%.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@echo "\033[92m.\033[0m\c"
+# $(ODIR)/%.o:srcs/%.c
+# 	@$(CC) $(CFLAGS) -c $< -o $@
+# 	@echo "\033[92m.\033[0m\c"
 
-$(NAME): $(ODIR) $(OFIX)
+$(NAME): $(OBJS)
 	@$(MAKE) -C ./includes/Libft
 	@$(MAKE) lib -C ./includes/dlist
-	@$(CC) $(CFLAGS) $(OFIX) -o $(NAME) $(LIBS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(LIBS)
 
 
 all: $(NAME)
 
 clean:
 	@$(MAKE) clean -C ./includes/Libft
-	@$(RM) $(OFIX) $(ODIR)
+	@$(RM) $(OBJS)
+	@$(RM) $(ODIR)
 	@echo "🧹"
 
 fclean: clean

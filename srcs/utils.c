@@ -1,8 +1,8 @@
-#include "../../includes/minishell.h"
+#include "../includes/minishell.h"
 
 void	error_message(char *message, t_dlist *t)
 {
 	printf("ERROR - ");
-	printf(message);
+	printf("%s", message);
 	t->error = 1;
 }

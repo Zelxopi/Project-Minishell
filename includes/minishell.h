@@ -6,7 +6,7 @@
 /*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:26:15 by kafortin          #+#    #+#             */
-/*   Updated: 2023/06/19 15:00:40 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/06/20 15:11:09 by kafortin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 # include <term.h>
 
 /*ERROR MESSAGES*/
-# define UNEXPECTED_TOKEN "Syntax error near unexpected token '%c'\n"
 # define UNCLOSED_QUOTES "Unclosed quotes\n"
 
 /*STRUCTS*/

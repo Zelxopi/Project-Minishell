@@ -76,7 +76,7 @@ void	ft_repetition_check(t_dlist *t)
 			str = temp->next->content;
 			if (*str == c)
 			{
-				printf(UNEXPECTED_TOKEN, c);
+				printf("Syntax error near unexpected token '%c'\n", c);
 				t->error = 1;
 				break ;
 			}
