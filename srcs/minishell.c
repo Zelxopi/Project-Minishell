@@ -2,11 +2,12 @@
 
 #include "../includes/minishell.h"
 
-int main()
+int	main(void)
 {
-	t_dlist	*tokens = malloc(sizeof(t_dlist));
-	char *line;
+	t_dlist	*tokens;
+	char	*line;
 
+	tokens = malloc(sizeof(t_dlist));
 	ft_signals();
 	while (1)
 	{
@@ -22,5 +23,5 @@ int main()
 	}
 	rl_clear_history();
 	free(tokens);
-    return (0);
+	return (0);
 }

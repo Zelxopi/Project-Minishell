@@ -16,7 +16,6 @@ void	ft_parse(char *line, t_dlist *tokens)
 	dlist_free_content(tokens);
 }
 
-
 char	*ft_clean_quotes(char *str)
 {
 	char	quote;
