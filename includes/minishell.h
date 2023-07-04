@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kafortin <kafortin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtrembla <mtrembla@student.42quebec>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 13:26:15 by kafortin          #+#    #+#             */
-/*   Updated: 2023/06/20 15:11:09 by kafortin         ###   ########.fr       */
+/*   Updated: 2023/07/04 15:18:30 by mtrembla         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,38 @@
 
 /*ERROR MESSAGES*/
 # define UNCLOSED_QUOTES "Unclosed quotes\n"
+# define FORK_ERROR "Error: fork did not work."
+# define PIPE_ERROR "Error: pipe did not work."
+# define ARG_NUM_ERROR "Error: invalid number of arguments."
+# define PATH_ERROR "Error: path not found."
+# define COMMAND_ERROR "Error: command not found."
+# define ENV_ERROR "Error: PATH is not an environment variable."
+# define OPEN_ERROR "Error: file could not be opened."
 
 /*STRUCTS*/
+
+typedef struct path
+{
+	char	*path;
+	char	*join;
+	char	**env;
+}				t_path;
+
+typedef struct cmd
+{
+	t_path	path;
+	char	**cmd;
+}				t_cmd;
+
+typedef struct files
+{
+	int		fd[2];
+	int		input;
+	int		output;
+	pid_t	pid1;
+	pid_t	pid2;
+}			t_files;
+
 
 /*FUNCTIONS*/
 
@@ -55,5 +85,7 @@ int					ft_create_token(char *args, int i, int start, t_dlist *t);
 /*signals*/
 void				ft_signals(void);
 void				ft_sigint_handler(int signum);
+
+void run_minishell(t_dlist *t);
 
 #endif

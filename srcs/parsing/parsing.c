@@ -12,7 +12,7 @@ void	ft_parse(char *line, t_dlist *tokens)
 	ft_repetition_check(tokens);
 	view(*tokens);
 	if (!tokens->error)
-		printf("OK\n");
+		run_minishell(tokens);
 	dlist_free_content(tokens);
 }
 

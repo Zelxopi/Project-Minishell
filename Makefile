@@ -7,6 +7,7 @@ SRCS =	./srcs/minishell.c \
 		./srcs/utils.c \
 		./srcs/parsing/parsing.c \
 		./srcs/parsing/split.c \
+		./srcs/exec/exec.c \
 
 OBJS = $(SRCS:.c=.o)
 
